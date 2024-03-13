@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'song.dart';
 
-import 'package:waytodeen2/pages/playlistProvider.dart';
+import 'playlistProvider.dart';
 import 'sura_page.dart';
 
 class audio extends StatefulWidget {

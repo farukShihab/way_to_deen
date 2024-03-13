@@ -13,7 +13,8 @@ import 'package:waytodeen2/onboarding_screens/intro5.dart';
 import 'package:waytodeen2/onboarding_screens/intro6.dart';
 import 'package:waytodeen2/onboarding_screens/intro7.dart';
 import 'package:waytodeen2/pages/hidden_drawer.dart';
-import 'package:waytodeen2/pages/home.dart';
+
+
 
 
 class onBoard extends StatefulWidget {
