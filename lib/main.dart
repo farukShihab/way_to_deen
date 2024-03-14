@@ -10,9 +10,8 @@ import 'package:waytodeen2/themes/theme_provider.dart';
 
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final prefs =await SharedPreferences.getInstance();
-  final onboarding =prefs.getBool("onboarding")??false;
+  
+    
   runApp(
     MultiProvider(
       providers:[
@@ -20,16 +19,17 @@ void main() async {
        ChangeNotifierProvider(create: (context)=>ThemeProvider())
     
     ],
-    child : MyApp(onboarding: onboarding),
-    ));
+    child : MyApp(),
+    )
+    );
 }
 
 
 
-
+ 
 class MyApp extends StatefulWidget {
-  final bool onboarding;
-  const MyApp({super.key,required this.onboarding});
+   
+     const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -65,8 +65,8 @@ class _MyAppState extends State<MyApp> {
               return const splash();
             } else {
               return const Scaffold(
-                backgroundColor: Color.fromARGB(255, 48, 48, 48),
-              body:Text('Pleas allow the permission for accessing location ',style:TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                 backgroundColor: Color.fromARGB(255, 48, 48, 48),
+                 body:Text('Pleas allow the permission for accessing location ',style:TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
               );
             }
 

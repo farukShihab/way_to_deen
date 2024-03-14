@@ -5,6 +5,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:waytodeen2/onboarding_screens/on_board.dart';
 import 'package:waytodeen2/pages/hidden_drawer.dart';
 import 'package:waytodeen2/pages/home.dart';
@@ -15,10 +16,12 @@ class splash extends StatefulWidget {
   const splash({super.key});
 
   @override
-  State<splash> createState() => _splashState();
+  State<splash> createState() => splashState();
 }
 
-class _splashState extends State<splash> {
+class splashState extends State<splash> {
+
+  static const String KeyPressed ="pressed";
   List skills=<String>[
   
   "WAY TO DEEN",
@@ -26,12 +29,15 @@ class _splashState extends State<splash> {
   @override
   void initState() {
     //seting time
+    /*
     Future.delayed(Duration(seconds:6),(){
       Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>/* HiddenDrawer()*/onBoard()));
-      
-      
     });
+    */
+
     super.initState();
+    whereTOgo();
+
     
   }
   @override
@@ -81,4 +87,33 @@ class _splashState extends State<splash> {
       );
     
   }
+  
+  void whereTOgo () async {
+   
+   var sharedPref = await SharedPreferences.getInstance();
+    var isPressed= sharedPref.getBool(KeyPressed);
+
+    Future.delayed(Duration(seconds:6),(){
+      
+      if(isPressed!=null){
+        if(isPressed){
+           Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>HiddenDrawer()));
+ 
+        }
+        else{
+          Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>/* HiddenDrawer()*/onBoard()));
+ 
+        }
+        
+      }else{
+         Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>/* HiddenDrawer()*/onBoard()));
+ 
+      }
+
+
+     // Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>/* HiddenDrawer()*/onBoard()));
+    });
+
+  }
 }
+

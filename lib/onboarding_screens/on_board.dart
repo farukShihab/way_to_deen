@@ -2,6 +2,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -13,6 +14,7 @@ import 'package:waytodeen2/onboarding_screens/intro5.dart';
 import 'package:waytodeen2/onboarding_screens/intro6.dart';
 import 'package:waytodeen2/onboarding_screens/intro7.dart';
 import 'package:waytodeen2/pages/hidden_drawer.dart';
+import 'package:waytodeen2/splash.dart';
 
 
 
@@ -125,10 +127,11 @@ class _onBoardState extends State<onBoard> {
       width: MediaQuery.of(context).size.width*.9,
        child: TextButton( 
              onPressed: ()async{
-              final pres =await SharedPreferences.getInstance();
-              pres.setBool("onboarding", true);
 
-              if(!mounted)return;
+              
+
+               var sharedPref = await SharedPreferences.getInstance();
+               sharedPref.setBool( splashState.KeyPressed, true);
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HiddenDrawer()));
               },
        child:Text('Get Started',style: TextStyle(color: Colors.white
