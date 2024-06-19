@@ -45,26 +45,30 @@ class _QiblahScreenState extends State<QiblahScreen> with SingleTickerProviderSt
             _animationController!.forward(from: 0);
 
             return Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "${qiblahDirection.direction.toInt()}°",
-                      style: const TextStyle( fontSize: 24),
-                    ),
-                 
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 300,
-                        child: AnimatedBuilder(
-                          animation: animation!,
-                          builder: (context, child) => Transform.rotate(
-                              angle: animation!.value,
-                              child: Image.asset('assets/qibla.png')),
-                        ))
-                  ]),
+              child:
+                  SingleChildScrollView(
+                      child:Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "${qiblahDirection.direction.toInt()}°",
+                              style: const TextStyle( fontSize: 24),
+                            ),
+
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            SizedBox(
+                                height: 300,
+                                child: AnimatedBuilder(
+                                  animation: animation!,
+                                  builder: (context, child) => Transform.rotate(
+                                      angle: animation!.value,
+                                      child: Image.asset('assets/qibla.png')),
+                                ))
+                          ])
+                  ),
+
             );
           },
         ),
